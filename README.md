@@ -16,6 +16,7 @@ $ cd angular-enterprise-kickstart
 $ sudo npm -g install grunt-cli karma bower
 $ npm install
 $ bower install
+$ ./node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update
 $ grunt watch
 ```
 
@@ -27,12 +28,13 @@ Finally, open `http://localhost:8000` in your browser.
 
 - Require JS integration, optimization and minification.
 - Modularization proposal based on AngularJS+RequireJS.
+- Integration of E2E tests with Protractor.
 - Separation of tests from application sources.
 - Separation of styles from application sources.
 - Updated to use the latest versions of both grunt plugins and bower libs.
 - Added some core libs regularly used on enterprise development. Example: restangular, ng-table, momentjs, etc.
 - WebServer functionality with rules.
-- Soon: Integration of E2E tests - Work in Progress / Migrating to Protractor as angular-scenario is presenting incompatibilities
+
 
 Our scope probably is narrower than ngBoilerplate.
 We do not look out to be every AngularJS project kickstart, rather we look forward
@@ -66,7 +68,6 @@ At a high level, the structure looks roughly like this:
 ```
 angular-enterprise-kickstart/
   |- grunt-tasks/
-  |- karma/
   |- src/
   |  |- app/
   |  |  |- <app logic>
@@ -78,6 +79,8 @@ angular-enterprise-kickstart/
   |  |- less/
   |  |  |- main.less
   |- test/
+  |  |- config/
+  |  |  |- <test config files>
   |  |- unit/
   |  |  |- <unit test files>
   |  |- e2e/
@@ -98,8 +101,8 @@ What follows is a brief description of each entry, but most directories contain
 their own `README.md` file with additional documentation, so browse around to
 learn more.
 
-- `karma/` - test configuration.
 - `src/` - our application sources. [Read more &raquo;](src/README.md)
+- `test/` - our application tests and configuration. [Read more &raquo;](src/README.md)
 - `vendor/` - third-party libraries. [Bower](http://bower.io) will install
   packages here. Anything added to this directory will need to be manually added
   to `build.config.js` and `karma/karma-unit.js` to be picked up by the build
@@ -337,9 +340,6 @@ following to the end of the `body` tag in `index.html`:
     such as <a href="http://gulpjs.com">Gulp</a>, <a href="http://brunch.io">Brunch</a>
     and recently <a href="https://github.com/joliss/broccoli">Brocolli</a>.
     We are also aware that the build system can be simpler than it is right now, both for this project and ngBoilerplate.
-- We plan to migrate e2e tests from angular-scenario to <a href="https://github.com/angular/protractor">Protractor</a>
-    which is the new recommended tool by the angular team.
-    <a href="http://docs.angularjs.org/guide/dev_guide.e2e-testing">See more</a>
 - We will also plan to build a small application example with this project to depict how to use the different technologies together.
 
 ### To Do
