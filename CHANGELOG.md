@@ -1,4 +1,20 @@
-# 0.3.1 (2013-09-13)
+<a name="v0.1.1"></a>
+#v0.1.1 (2014-03-04)
+* Integration of E2E tests with Protractor.
+
+<a name="v0.1.0"></a>
+
+# v0.1.0 (2014-02-21)
+* Require JS integration, optimization and minification.
+* Modularization proposal based on AngularJS+RequireJS.
+* Separation of tests from application sources.
+* Separation of styles from application sources.
+* Updated to use the latest versions of both grunt plugins and bower libs.
+* Added some core libs regularly used on enterprise development. Example: restangular, ng-table, momentjs, etc.
+* WebServer functionality with rules.
+
+
+# NG Boilerplate 0.3.1 (2013-09-13)
 
 ## Features
 

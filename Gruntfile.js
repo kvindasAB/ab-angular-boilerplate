@@ -19,6 +19,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-ng-annotate');
+  grunt.loadNpmTasks('grunt-protractor-runner');
 
 
   /**
@@ -355,16 +356,6 @@ module.exports = function ( grunt ) {
      * The Karma configurations.
      */
     karma: {
-      e2e: {
-        configFile: '<%= build_dir %>/karma-e2e.conf.js',
-        port: 9101,
-        singleRun: true
-      },
-      e2edebug: {
-        configFile: '<%= build_dir %>/karma-e2e.conf.js',
-        port: 9101,
-        singleRun: false
-      },
       unit: {
         configFile: '<%= build_dir %>/karma-unit.conf.js',
         port: 9101,
@@ -373,6 +364,28 @@ module.exports = function ( grunt ) {
       continuous: {
         configFile: '<%= build_dir %>/karma-unit.conf.js',
         singleRun: true
+      }
+    },
+
+    /**
+     * Protractor configuration
+     */
+    protractor: {
+      options: {
+        configFile: "node_modules/grunt-protractor-runner/node_modules/protractor/referenceConf.js", // Default config file
+        keepAlive: true, // If false, the grunt process stops when the test fails.
+        noColor: false, // If true, protractor will not use colors in its output.
+        args: {
+          // Arguments passed to the command
+        }
+      },
+      e2e: {
+        options: {
+          configFile: "build/protractor-e2e.conf.js", // Target-specific config file
+          args: {
+              baseUrl: 'http://localhost:8100'
+          }
+        }
       }
     },
 
@@ -416,9 +429,9 @@ module.exports = function ( grunt ) {
      * This task compiles the karma template so that changes to its file array
      * don't have to be managed manually.
      */
-    karmaconfig: {
+    testconfig: {
       unit: {
-        tpl: 'karma/karma-unit.tpl.js',
+        tpl: 'test/config/karma-unit.tpl.js',
         dest: 'karma-unit.conf.js',
         src: [ 
           '<%= vendor_files.js %>',
@@ -428,8 +441,8 @@ module.exports = function ( grunt ) {
         ]
       },
       e2e: {
-        tpl: 'karma/karma-e2e.tpl.js',
-        dest: 'karma-e2e.conf.js',
+        tpl: 'test/config/protractor-e2e.tpl.js',
+        dest: 'protractor-e2e.conf.js',
         src: [
         ]
       }
@@ -583,7 +596,7 @@ module.exports = function ( grunt ) {
     'clean', 'jshint', 'coffeelint', 'coffee', 'less:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_apptpl' , 'index:build',
-    'karmaconfig:unit', 'karma:continuous'
+    'testconfig:unit', 'karma:continuous'
   ]);
 
   /**
@@ -599,7 +612,7 @@ module.exports = function ( grunt ) {
   ]);
 
   grunt.registerTask( 'test:e2e', [
-    'build', 'karmaconfig:e2e', 'connect:testserver', 'karma:e2e'
+    'build', 'testconfig:e2e', 'connect:testserver', 'protractor:e2e'
   ]);
 
   /**
@@ -653,7 +666,7 @@ module.exports = function ( grunt ) {
    * run, we use grunt to manage the list for us. The `karma/*` files are
    * compiled as grunt templates for use by Karma. Yay!
    */
-  grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
+  grunt.registerMultiTask( 'testconfig', 'Process test config templates', function () {
     var jsFiles = filterForJS( this.filesSrc );
     var tplFile = this.files[0].tpl;
     var destFile = this.files[0].dest;
