@@ -1,6 +1,10 @@
+<a name="v0.1.1"></a>
+#v0.1.1 (2014-03-04)
+* Integration of E2E tests with Protractor.
+
 <a name="v0.1.0"></a>
 
-# v0.1.0 (2014-03-04)
+# v0.1.0 (2014-02-21)
 * Require JS integration, optimization and minification.
 * Modularization proposal based on AngularJS+RequireJS.
 * Separation of tests from application sources.
