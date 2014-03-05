@@ -372,7 +372,7 @@ module.exports = function ( grunt ) {
      */
     protractor: {
       options: {
-        configFile: "node_modules/protractor/referenceConf.js", // Default config file
+        configFile: "node_modules/grunt-protractor-runner/node_modules/protractor/referenceConf.js", // Default config file
         keepAlive: true, // If false, the grunt process stops when the test fails.
         noColor: false, // If true, protractor will not use colors in its output.
         args: {
@@ -386,7 +386,7 @@ module.exports = function ( grunt ) {
               baseUrl: 'http://localhost:8100'
           }
         }
-      },
+      }
     },
 
     /**
@@ -429,7 +429,7 @@ module.exports = function ( grunt ) {
      * This task compiles the karma template so that changes to its file array
      * don't have to be managed manually.
      */
-    karmaconfig: {
+    testconfig: {
       unit: {
         tpl: 'test/config/karma-unit.tpl.js',
         dest: 'karma-unit.conf.js',
@@ -596,7 +596,7 @@ module.exports = function ( grunt ) {
     'clean', 'jshint', 'coffeelint', 'coffee', 'less:build',
     'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
     'copy:build_appjs', 'copy:build_vendorjs', 'copy:build_apptpl' , 'index:build',
-    'karmaconfig:unit', 'karma:continuous'
+    'testconfig:unit', 'karma:continuous'
   ]);
 
   /**
@@ -612,7 +612,7 @@ module.exports = function ( grunt ) {
   ]);
 
   grunt.registerTask( 'test:e2e', [
-    'build', 'karmaconfig:e2e', 'connect:testserver', 'protractor:e2e'
+    'build', 'testconfig:e2e', 'connect:testserver', 'protractor:e2e'
   ]);
 
   /**
@@ -666,7 +666,7 @@ module.exports = function ( grunt ) {
    * run, we use grunt to manage the list for us. The `karma/*` files are
    * compiled as grunt templates for use by Karma. Yay!
    */
-  grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
+  grunt.registerMultiTask( 'testconfig', 'Process test config templates', function () {
     var jsFiles = filterForJS( this.filesSrc );
     var tplFile = this.files[0].tpl;
     var destFile = this.files[0].dest;

@@ -225,8 +225,28 @@ Bootstrap styles and AngularJS itself have been added to them for super-easy
 deploying. If you use any assets (`src/assets/`) then they will be copied to
 `bin/` as is.
 
+
+To run e2e tests run the task test:e2e.
+This task is not part of the compile or build tasks, so should be run manually:
+
+```sh
+$ grunt e2e
+```
+
+This will concatenate and minify your sources and place them by default into the
+`bin/` directory. There will only be three files: `index.html`,
+`your-app-name.js`, and `your-app-name.css`. All of the vendor dependencies like
+Bootstrap styles and AngularJS itself have been added to them for super-easy
+deploying. If you use any assets (`src/assets/`) then they will be copied to
+`bin/` as is.
+
+
+
 Lastly, a complete build is always available by simply running the default
 task, which runs `build` and then `compile`:
+
+
+
 
 ```sh
 $ grunt
