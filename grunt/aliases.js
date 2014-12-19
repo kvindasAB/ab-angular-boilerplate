@@ -75,6 +75,11 @@ module.exports = function(grunt, options) {
       'build',
       'compile'
     ],
+    'dev': [
+      'build',
+      'connect:server',
+      'watch'
+    ],
     'build': [
       'clean',
       'jshint',
