@@ -4,9 +4,9 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="aek node_modules" level="project" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="myDocStringFormat" value="Plain" />
   </component>
 </module>
-
