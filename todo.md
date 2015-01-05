@@ -14,4 +14,4 @@ Reintegrate e2e testing with requirejs. -- PENDING
     - Migrate to protractor -- PENDING
 Review and fix the delta process - DONE
 Integrate core packages and templates.
-Migrate templates from Bootstrap2.3 to Bootstrap3
+Migrate templates from Bootstrap2.3 to Bootstrap3 - DONE

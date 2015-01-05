@@ -1,3 +1,13 @@
+<a name="0.1.2"></a>
+### 0.1.2 (2015-01-05)
+
+Improved build and update dependencies.
+
+Build improved:
+- build decomposed on multiple simpler files
+- build dependencies updated
+- client/browser dependencies updated
+
 <a name="v0.1.1"></a>
 #v0.1.1 (2014-03-04)
 * Integration of E2E tests with Protractor.
