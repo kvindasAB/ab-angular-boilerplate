@@ -29,7 +29,6 @@ require.config({
     text: '../../vendor/requirejs-text/text',
     lodash: '../../vendor/lodash/dist/lodash.min',
     moment: '../../vendor/moment/min/moment.min',
-    placeholders: '../../vendor/placeholders/angular-placeholders-0.0.1-SNAPSHOT.min',
     plusOne: '../common/plusOne/plusOne',
     angularTemplateCache: '../common/angular-templatecache/angular-templatecache'
   },
@@ -46,7 +45,6 @@ require.config({
         'lodash'
       ]
     },
-    'placeholders': { deps: ['angular'] },
     'plusOne': { deps: ['angular'] }
   },
   // ask Require.js to load these files (all our tests)
